@@ -14,3 +14,15 @@
 #     date_of_birth = db.Column(db.Date, nullable=False)
 #     weight = db.Column(db.Float, nullable=False)
 
+с1 = users(
+    first_name = 'Сергей',
+    last_name = 'Живицкий',
+    city = 'Москва',
+    date_of_birth = '15.01.2010',
+    weight = '60'
+)
+с2 = user_info(
+    city = 'Москва',
+    date_of_birth = '15.01.2010',
+    weight = '60'
+)

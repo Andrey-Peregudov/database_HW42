@@ -1,4 +1,4 @@
 __pycache__
 .venv
 .idea
-app\models.py
+app/model.py

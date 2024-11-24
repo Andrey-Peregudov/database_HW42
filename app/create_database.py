@@ -1,4 +1,5 @@
 import sqlalchemy as db
+import sqlite3
 # from sqlalchemy.orm import Session, sessionmaker
 # from model import User, User_info
 
@@ -41,6 +42,7 @@ insert_user_info = user_info.insert().values([
 conn.execute(insert_user)
 conn.execute(insert_user_info)
 conn.commit()
+
 #
 # #бъект session для работы с базой
 # session = Session(bind=engine)
@@ -61,7 +63,10 @@ print(select_filter.fetchall())
 select_order_by = conn.execute(db.select(users).order_by(users.c.last_name.asc() ))
 print(select_order_by.fetchall())
 
+#Вывод первого пользователя
+conn = sqlite3.connect('database_one.db')
+cursor = conn.cursor()
+print(cursor.execute('SELECT first_name FROM users LIMIT 1').fetchall())
 
-#all
-select_all = conn.execute(db.select(user_info).filter(user_info.c.city == 'Москва').all())
-print(select_all.fetchall())
+cursor = conn.cursor()
+print(cursor.execute('SELECT * FROM users WHERE user_id < 2').fetchall())

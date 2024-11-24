@@ -25,18 +25,19 @@ user_info = db.Table('user_info', metadata,
 #Создание объектов таблиц
 metadata.create_all(engine)
 
-#Заполнение таблиц данными списком словарей
-insert_user = users.insert().values([
-    {'first_name':'Иван', 'last_name':'Филипов'},
-    {'first_name':'Ирина', 'last_name':'Кандрашева'},
-    {'first_name':'Кирил', 'last_name':'Земин'},
-])
+if user_info is not None:
+    #Заполнение таблиц данными списком словарей
+    insert_user = users.insert().values([
+        {'first_name':'Иван', 'last_name':'Филипов'},
+        {'first_name':'Ирина', 'last_name':'Кандрашева'},
+        {'first_name':'Кирил', 'last_name':'Земин'},
+    ])
 
-insert_user_info = user_info.insert().values([
-    {'city':'Москва', 'date_of_birth':'15.08.1980','weight':'95'},
-    {'city':'Хабаровск', 'date_of_birth':'24.01.1998','weight':'55'},
-    {'city':'Киров', 'date_of_birth':'04.04.2004','weight':'75'},
-])
+    insert_user_info = user_info.insert().values([
+        {'city':'Москва', 'date_of_birth':'15.08.1980','weight':'95'},
+        {'city':'Хабаровск', 'date_of_birth':'24.01.1998','weight':'55'},
+        {'city':'Киров', 'date_of_birth':'04.04.2004','weight':'75'},
+    ])
 
 #Выполнение запроса на добавление данных и принять изменения
 conn.execute(insert_user)
